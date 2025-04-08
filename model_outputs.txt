@@ -1,0 +1,21 @@
+Customer Churn Modeling Report
+==============================
+
+=== Logistic Regression ===
+AUC: 0.7062
+
+=== Feature Selection (Chi-Square) ===
+Top 5 selected features (first 5 rows):
+Row(selectedFeatures=DenseVector([0.0, 2.0, 1.0, 1.0, 0.0]), label=1.0)
+Row(selectedFeatures=DenseVector([0.0, 67.0, 0.0, 1.0, 0.0]), label=0.0)
+Row(selectedFeatures=DenseVector([0.0, 30.0, 0.0, 1.0, 0.0]), label=0.0)
+Row(selectedFeatures=DenseVector([0.0, 4.0, 1.0, 0.0, 1.0]), label=0.0)
+Row(selectedFeatures=DenseVector([0.0, 40.0, 1.0, 1.0, 0.0]), label=0.0)
+
+=== Model Tuning and Comparison ===
+LogisticRegression AUC: 0.7056
+DecisionTree AUC: 0.7902
+RandomForest AUC: 0.7905
+GBTClassifier AUC: 0.7789
+Best model: RandomForest with AUC = 0.7905
+
