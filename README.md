@@ -143,4 +143,49 @@ maxIter=20
 ```bash
 spark-submit churn_prediction.py
 ```
-### Make sure to include your original ouput and explain the code
+### Make sure to include your original ouput and explain the code  
+### sample input
+
+```csv
+customerID,gender,SeniorCitizen,tenure,PhoneService,InternetService,MonthlyCharges,TotalCharges,Churn
+CUST00001,Male,0,2,No,DSL,108.65,221.88,Yes
+CUST00002,Female,0,67,Yes,DSL,29.98,1459.31,No
+CUST00003,Female,0,30,Yes,DSL,81.26,2350.62,No
+```
+
+### Sample output
+
+Customer Churn Modeling Report
+==============================
+
+=== Logistic Regression ===
+AUC: 0.7062
+
+=== Feature Selection (Chi-Square) ===
+Top 5 selected features (first 5 rows):
+Row(selectedFeatures=DenseVector([0.0, 2.0, 1.0, 1.0, 0.0]), label=1.0)
+Row(selectedFeatures=DenseVector([0.0, 67.0, 0.0, 1.0, 0.0]), label=0.0)
+Row(selectedFeatures=DenseVector([0.0, 30.0, 0.0, 1.0, 0.0]), label=0.0)
+Row(selectedFeatures=DenseVector([0.0, 4.0, 1.0, 0.0, 1.0]), label=0.0)
+Row(selectedFeatures=DenseVector([0.0, 40.0, 1.0, 1.0, 0.0]), label=0.0)
+
+=== Model Tuning and Comparison ===
+LogisticRegression AUC: 0.7056
+DecisionTree AUC: 0.7902
+RandomForest AUC: 0.7905
+GBTClassifier AUC: 0.7789
+Best model: RandomForest with AUC = 0.7905
+
+### conclusion
+  In this assignment, we successfully built an end-to-end machine learning pipeline using Apache Spark MLlib to predict customer churn. The process involved:
+
+Data Preprocessing & Feature Engineering: We cleaned the dataset by handling missing values, indexed and one-hot encoded categorical variables, and assembled all features into a vector format suitable for machine learning models.
+
+Model Building & Evaluation: We trained a Logistic Regression model and evaluated it using the AUC (Area Under ROC Curve) metric, achieving an AUC of 0.7062.
+
+Feature Selection: We used the Chi-Square test to identify the top 5 most relevant features, helping us reduce dimensionality and focus on features with the most predictive power.
+
+Hyperparameter Tuning & Model Comparison: We compared four classification models — Logistic Regression, Decision Tree, Random Forest, and Gradient Boosted Trees — using 5-fold cross-validation. Among them, Random Forest achieved the highest AUC (0.7905), making it the best-performing model for this task.
+
+
+
